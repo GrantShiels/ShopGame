@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     float vertical;
 
     //move speed
-    public float moveSpeed = 20.0f;
+    public float moveSpeed = 10.0f;
 
 
 
