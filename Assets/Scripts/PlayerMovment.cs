@@ -12,6 +12,9 @@ public class PlayerMovment : MonoBehaviour
     //the rigid body for the PC
     public Rigidbody2D playerRB;
 
+    //Animator for the PC animaton
+    public Animator playerAnimator;
+
     //movment gets both the x and y to determine which move direction
     Vector2 movment;
 
@@ -22,6 +25,8 @@ public class PlayerMovment : MonoBehaviour
         //get input from keys and add them to the Vector2
         movment.x = Input.GetAxisRaw("Horizontal");
         movment.y = Input.GetAxisRaw("Vertical");
+
+        playerAnimator.SetFloat("Speed", movment.sqrMagnitude);
     }
 
     //fixed update time, not connected to frames. 
