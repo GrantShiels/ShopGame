@@ -31,6 +31,8 @@ public class PlayerMovment : MonoBehaviour
 
         playerAnimator.SetFloat("Speed", movment.sqrMagnitude);
 
+
+        //Used to change the direction the PC is facing
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
             playerRenderer.flipX = true;
@@ -52,10 +54,4 @@ public class PlayerMovment : MonoBehaviour
         
     }
 
-
-    //function that will flip the PC depdning on which direction it is moving
-    void changeDirection(){
-
-
-    }
 }
