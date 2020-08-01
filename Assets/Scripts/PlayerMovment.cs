@@ -18,6 +18,9 @@ public class PlayerMovment : MonoBehaviour
     //movment gets both the x and y to determine which move direction
     Vector2 movment;
 
+    //Renderer for PC
+    public SpriteRenderer playerRenderer;
+
     // Update is called once per frame
     //Will handle input
     void Update()
@@ -27,6 +30,17 @@ public class PlayerMovment : MonoBehaviour
         movment.y = Input.GetAxisRaw("Vertical");
 
         playerAnimator.SetFloat("Speed", movment.sqrMagnitude);
+
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            playerRenderer.flipX = true;
+        }
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            playerRenderer.flipX = false;
+        }
+
+        
     }
 
     //fixed update time, not connected to frames. 
@@ -36,5 +50,12 @@ public class PlayerMovment : MonoBehaviour
 
         playerRB.MovePosition(playerRB.position + movment * moveSpeed * Time.fixedDeltaTime);
         
+    }
+
+
+    //function that will flip the PC depdning on which direction it is moving
+    void changeDirection(){
+
+
     }
 }
