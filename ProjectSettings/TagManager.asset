@@ -44,6 +44,12 @@ TagManager:
   - name: Ground
     uniqueID: 2509770281
     locked: 0
+  - name: Wall Under
+    uniqueID: 1201726573
+    locked: 0
   - name: Player
     uniqueID: 1601627485
+    locked: 0
+  - name: Walls Over
+    uniqueID: 1802132391
     locked: 0
