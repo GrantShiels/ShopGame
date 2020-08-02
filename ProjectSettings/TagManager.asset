@@ -47,6 +47,9 @@ TagManager:
   - name: Wall Under
     uniqueID: 1201726573
     locked: 0
+  - name: Items
+    uniqueID: 1093769125
+    locked: 0
   - name: Player
     uniqueID: 1601627485
     locked: 0
