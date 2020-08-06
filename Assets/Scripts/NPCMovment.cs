@@ -50,13 +50,6 @@ public class NPCMovment : MonoBehaviour
         {
             walkCounter -= Time.deltaTime;
 
-            //If the counter is 0 stop walking
-            if (walkCounter < 0)
-            {
-                isWalking = false;
-                waitCounter = waitTime;
-            }
-
             //Set direction depedning on each move direction number
             switch (walkDirection)
             {
@@ -76,11 +69,22 @@ public class NPCMovment : MonoBehaviour
                 NPCBody.velocity = new Vector2(-moveSpeed, 0);
                 break;
             }
+
+
+            //If the counter is 0 stop walking
+            if (walkCounter < 0)
+            {
+                isWalking = false;
+                waitCounter = waitTime;
+            }
+            
         }
 
         else
         {
             waitCounter -= Time.deltaTime;
+
+            NPCBody.velocity = Vector2.zero;
 
             if (waitCounter < 0)
             {
