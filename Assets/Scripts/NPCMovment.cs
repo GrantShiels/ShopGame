@@ -25,6 +25,8 @@ public class NPCMovment : MonoBehaviour
     //move speed
     public float moveSpeed = 10.0f;
 
+    //will be used to determine which direction the NPC will move
+    private int walkDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -35,12 +37,72 @@ public class NPCMovment : MonoBehaviour
         //set up counters and time
         walkCounter = walkTime;
         waitCounter = waitTime;
+
+        ChooseDirection();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //if the NPC is walking
+        if (isWalking)
+        {
+            walkCounter -= Time.deltaTime;
+
+            //If the counter is 0 stop walking
+            if (walkCounter < 0)
+            {
+                isWalking = false;
+                waitCounter = waitTime;
+            }
+
+            //Set direction depedning on each move direction number
+            switch (walkDirection)
+            {
+                case 0:
+                NPCBody.velocity = new Vector2(0, moveSpeed);
+                break;
+
+                case 1:
+                NPCBody.velocity = new Vector2(moveSpeed, 0);
+                break;
+
+                case 2:
+                NPCBody.velocity = new Vector2(0, -moveSpeed);
+                break;
+
+                case 3:
+                NPCBody.velocity = new Vector2(-moveSpeed, 0);
+                break;
+            }
+        }
+
+        else
+        {
+            waitCounter -= Time.deltaTime;
+
+            if (waitCounter < 0)
+            {
+                ChooseDirection();
+            }
+        }
     }
+
+
+    //function that chooses which direction the NPC will move
+    public void ChooseDirection()
+    {
+
+        //Choose random direction
+        walkDirection = Random.Range (0,4);
+        isWalking = true;
+        walkCounter = walkTime;
+
+    }
+
+
+
+
+
 }
